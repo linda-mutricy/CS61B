@@ -76,9 +76,6 @@ public class Planet {
 		}
 		return yyNetForce;
 	}
-//samh.update(0.005, 10, 3) ... 
-//an x-force of 10 newtons, y-force of 3 newtons, applied for 0.005 secs.
-//adjust xxVel and yyVel and xxPos and yyPos
 
 	public void update(double dt, double fX, double fY) {
 		double aXX = fX/mass;
@@ -90,5 +87,9 @@ public class Planet {
 		yyPos = yyPos + (dt*yyVel);
 
 	}
+	public void draw() {
+		StdDraw.picture(xxPos,yyPos,imgFileName);
+	}
+
 }
 
