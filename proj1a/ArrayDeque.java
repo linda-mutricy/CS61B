@@ -20,7 +20,7 @@ public class ArrayDeque<T> {
     // A resizing method.
     private void resize(int c) {
         T[] newitems = (T[]) new Object[c];
-        for (int i = 0; i <= capacity; i += 1){
+        for (int i = 0; i <= capacity; i += 1) {
             newitems[i] = items[(first + i) % capacity];
         }
         first = c;
@@ -41,10 +41,10 @@ public class ArrayDeque<T> {
     public void addFirst(T item) {
         if (isFull()) {
             resize(capacity * 2);
-        } else if (first == 0) {
-            first = size-1;
+        } else if (first == (size - 1)) {
+            first = 0;
         } else {
-            first -=1;
+            first += 1;
         }
         items[first] = item;
         size += 1;
@@ -55,12 +55,10 @@ public class ArrayDeque<T> {
      */
     public void addLast(T item) {
         if (isFull()) {
-            resize(capacity*2);
-        }
-        else if (last == size-1) {
+            resize(capacity * 2);
+        } else if (last == size - 1) {
             last = 0;
-        }
-        else {
+        } else {
             last += 1;
         }
         items[last] = item;
@@ -105,13 +103,12 @@ public class ArrayDeque<T> {
      */
     public T removeFirst() {
         T x = items[first];
-        if (first == size - 1){
+        if (first == size - 1) {
             first = 0;
+        } else {
+            first += 1;
         }
-        else {
-            first +=1;
-        }
-        size -=1;
+        size -= 1;
         return x;
     }
 
@@ -121,10 +118,9 @@ public class ArrayDeque<T> {
      */
     public T removeLast() {
         T x = items[last];
-        if (last == 0){
-            last = size-1;
-        }
-        else {
+        if (last == 0) {
+            last = size - 1;
+        } else {
             last -= 1;
         }
         size -= 1;
@@ -137,5 +133,6 @@ public class ArrayDeque<T> {
      * returns null. Must not alter the deque!
      */
     public T get(int index) {
-            return items[index];
+        return items[index];
+    }
 }
