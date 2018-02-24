@@ -1,4 +1,4 @@
-public class ArrayDeque<T> {
+public class ArrayDeque<T> implements Deque<T> {
     /**
      * This class accepts any generic type, not just integers. See lecture 5 for generics.
      * /* Lec 4 and 5. See last slide for rule of thumb.
@@ -37,6 +37,7 @@ public class ArrayDeque<T> {
         first = -1; //the first thing is -1.
     }
 
+    @Override
     //Adds an item of type T to the front of the deque.
     public void addFirst(T item) {
         if (isFull()) {
@@ -50,6 +51,7 @@ public class ArrayDeque<T> {
         size += 1;
     }
 
+    @Override
     /**
      * Adds an item of type T to the back of the deque.
      */
@@ -66,6 +68,7 @@ public class ArrayDeque<T> {
     }
 
 
+    @Override
     /**
      * Returns true if deque is empty, false otherwise.
      */
@@ -80,6 +83,7 @@ public class ArrayDeque<T> {
         return (size == capacity);
     }
 
+    @Override
     /**
      * Returns the number of items in the deque.
      */
@@ -87,6 +91,7 @@ public class ArrayDeque<T> {
         return size;
     }
 
+    @Override
     /**
      * Prints the items in the deque from first to last, separated by a space.
      */
@@ -97,6 +102,7 @@ public class ArrayDeque<T> {
         System.out.println();
     }
 
+    @Override
     /**
      * Removes and returns the item at the front of the deque.
      * If no such item exists, returns null.
@@ -112,6 +118,7 @@ public class ArrayDeque<T> {
         return x;
     }
 
+    @Override
     /**
      * Removes and returns the item at the back of the deque.
      * If no such item exists, returns null.
@@ -127,6 +134,7 @@ public class ArrayDeque<T> {
         return x;
     }
 
+    @Override
     /**
      * Gets the item at the given index, where 0 is the front,
      * 1 is the next item, and so forth. If no such item exists,

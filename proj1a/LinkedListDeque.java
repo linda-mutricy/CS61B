@@ -1,4 +1,4 @@
-public class LinkedListDeque <T> {
+public class LinkedListDeque <T> implements Deque<T> {
     /**This class accepts any generic type, not just integers. See lecture 5 for generics.
      /* Lec 4 and 5. See last slide for rule of thumb.
      /* Add and remove operations must take constant time.
@@ -35,17 +35,19 @@ public class LinkedListDeque <T> {
         size = 0;
     }
 
+    @Override
     // Adds an item of type T to the front of the deque.
     public void addFirst(T item) {
         DLList first = new DLList(item, null, null);
         first.prev = sentFront;
-        first.next = sentFront.next; //how to push everything back 1????
+        first.next = sentFront.next;
         sentFront.next = first;
         first.next.prev = first;
 
         size += 1;
     }
 
+    @Override
     //Adds an item of type T to the back of the deque.
     public void addLast(T item) {
         DLList last = new DLList(item, null, null);
@@ -56,16 +58,19 @@ public class LinkedListDeque <T> {
         size += 1;
     }
 
+    @Override
     //Returns true if deque is empty, false otherwise.
     public boolean isEmpty() {
         return (size == 0);
     }
 
+    @Override
     //Returns the number of items in the deque.
     public int size() {
         return size;
     }
 
+    @Override
     //Prints the items in the deque from first to last, separated by a space.
     public void printDeque() {
         DLList printedItem = sentFront.next;
@@ -75,6 +80,7 @@ public class LinkedListDeque <T> {
         System.out.println();
     }
 
+    @Override
     //Removes and returns the item at the front of the deque. If no such item exists, returns null.
     public T removeFirst() {
         DLList removedFirst = sentFront.next;
@@ -83,6 +89,7 @@ public class LinkedListDeque <T> {
         return removedFirst.item;
     }
 
+    @Override
     //Removes and returns the item at the back of the deque. If no such item exists, returns null.
     public T removeLast() {
         DLList removedLast = sentBack.prev;
@@ -91,6 +98,7 @@ public class LinkedListDeque <T> {
         return removedLast.item;
     }
 
+    @Override
     //Gets the item at the given index, where 0 is the front, 1 the next, so forth. If no such item exists, returns null.
     //Must not alter the deque!
     public T get(int index) {
